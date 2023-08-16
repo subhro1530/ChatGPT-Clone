@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>ChatGPT Clone</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <nav>
+      <!-- Add this button to start a new chat -->
+      <div class="top-btns">
+        <button id="new-chat-button">
+          <p>+</p>
+          New Chat
+        </button>
+        <button id="close-navbar"><i class="fa-solid fa-bars"></i></button>
+      </div>
+
+      <!-- Add this section to display chat history -->
+      <div class="chat-history" id="chat-history">
+        <!-- Previous chat messages will be displayed here -->
+      </div>
+    </nav>
+    <div class="chat-container">
+      <div class="chat-box" id="chat-box">
+        <div class="input-history" id="input-history">
+          <!-- User's input history will be displayed here -->
+          
+        </div>
+        <div class="output-history" id="output-history">
+          <!-- Chatbot's responses will be displayed here -->
+        </div>
+      </div>
+      <div class="input-container">
+        <input type="text" id="user-input" placeholder="Send a message..." />
+        <button id="send-button" type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
