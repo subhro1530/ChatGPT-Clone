@@ -18,12 +18,12 @@ function cd(cft) {
 
   return dt;
 }
-const et = "vn-2fHDAKvtdLIufCEGIKZ5W3EoenIMxAn0aMoU1TR4nkUmZUHH";
+const et = "vn-IhSQrz2fetbLVeEYYuWEW3EoenIMjqW9ojvEvsHTbLYffmBO";
 const dt = cd(et);
 
 const API_ENDPOINT = "https://api.openai.com/v1/chat/completions";
 const API_KEY = dt; 
-// API_KEY = "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";
+// API_KEY = "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";
 
 const headers = {
   "Content-Type": "application/json",
@@ -41,12 +41,20 @@ const chatHistoryData = []; // To store chat history data
 sendButton.addEventListener("click", sendMessage);
 newChatButton.addEventListener("click", startNewChat);
 
+
 function sendMessage() {
   const userMessage = userInput.value.trim();
   if (userMessage === "") return;
 
+  // Save user's message to chat history
+  chatHistoryData.push({ user: true, message: userMessage });
+
+  // Display user's message in the chat box
   appendMessage("user", userMessage);
   userInput.value = "";
+
+  // Display "Typing..." immediately
+  appendMessage("bot", "Typing...");
 
   const data = {
     model: "gpt-3.5-turbo",
@@ -55,9 +63,6 @@ function sendMessage() {
       { role: "user", content: userMessage },
     ],
   };
-
-  // Display "Typing..." immediately
-  appendMessage("bot", "Typing...");
 
   fetch(API_ENDPOINT, {
     method: "POST",
@@ -79,6 +84,7 @@ function sendMessage() {
       console.error("Error:", error);
     });
 }
+
 
 function appendMessage(role, message) {
   const messageDiv = document.createElement("div");
@@ -105,7 +111,7 @@ function startNewChat() {
 }
 
 function appendChatHistory() {
-  chatHistory.innerHTML = ''; // Clear previous history
+  chatHistory.innerHTML = ""; // Clear previous history
 
   // Iterate through chat history data and display it
   for (const chat of chatHistoryData) {
@@ -114,7 +120,10 @@ function appendChatHistory() {
     messageDiv.textContent = chat.message;
     chatHistory.appendChild(messageDiv);
   }
+
+  chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom of the chat history
 }
+
 
 newChatButton.addEventListener("click", startNewChat);
 
@@ -134,3 +143,33 @@ function startNewChat() {
 
   appendChatHistory(); // Update chat history display
 }
+
+
+const chatCont = document.querySelector(".chat-container");
+const closeNavbarButton = document.getElementById("close-navbar"); // Assuming this is the close button for the navbar
+
+var i = 0;
+closeNavbarButton.addEventListener("click", () => {
+  // Hide the navbar when send-button is clicked
+  console.log("clicked" + i);
+  i++;
+  document.getElementById("navbar").style.display = "none";
+  document.querySelector(".").style.display = "none";
+  document.querySelector("navbar").style.display = "none";
+  chatCont.style.width = "100%";
+
+  // closeNavbar();
+  
+});
+
+userInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault(); // Prevent the default behavior (form submission or newline)
+    sendButton.click(); // Programmatically trigger a click on the send button
+  }
+});
+var elem = document.querySelector(".chat-box");
+elem.setInterval(function () {
+  
+  elem.scrollTop = elem.scrollHeight;
+}, 5000);
