@@ -96,12 +96,38 @@ function appendMessage(role, message) {
   const messageDiv = document.createElement("div");
   messageDiv.classList.add(role);
   messageDiv.textContent = message;
+
+  if (role === "bot") {
+    const copyButton = document.createElement("button");
+    copyButton.innerHTML = '<i class="fas fa-copy"></i>'; // Use a copy icon
+    copyButton.classList.add("copy-button");
+    copyButton.addEventListener("click", () => {
+      copyToClipboard(message);
+    });
+
+    // Append the copy button to the messageDiv
+    messageDiv.appendChild(copyButton);
+  }
+
   chatBox.appendChild(messageDiv);
   chatBox.scrollTop = chatBox.scrollHeight;
+
   // Store updated chat history data in local storage
   localStorage.setItem("chatHistory", JSON.stringify(chatHistoryData));
-  
 }
+
+
+function copyToClipboard(text) {
+  const textArea = document.createElement("textarea");
+  textArea.value = text;
+  document.body.appendChild(textArea);
+  textArea.select();
+  document.execCommand("copy");
+  document.body.removeChild(textArea);
+
+  console.log("Copied to clipboard:", text);
+}
+
 
 function startNewChat() {
   const userMessage = userInput.value.trim();

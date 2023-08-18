@@ -203,12 +203,31 @@ nav{
 .clear-all-button:hover{
     background-color: rgb(52, 52, 52);
 }
+.bot {
+  position: relative;
+  padding-right: 20px; /* Add some space for the icon */
+}
+
 .copy-button {
+  position: absolute;
+  top: 0;
+  right: 0;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
-  margin-left: 5px;
   font-size: 1rem;
-  color: #999; /* Color for the copy icon */
+  color: #999; /* Default color for the copy icon */
+  transition: color 0.3s, transform 0.3s; /* Adding transitions for hover and click effects */
+  margin-top: 20px;
 }
+
+.copy-button:hover {
+  color: #f6f6f6; /* Change color on hover */
+  transform: scale(1.2); /* Enlarge on hover */
+}
+
+.copy-button:active {
+  transform: scale(0.8); /* Shrink on click */
+}
+
