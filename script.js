@@ -22,8 +22,8 @@ const et = "vn-IhSQrz2fetbLVeEYYuWEW3EoenIMjqW9ojvEvsHTbLYffmBO";
 const dt = cd(et);
 
 const API_ENDPOINT = "https://api.openai.com/v1/chat/completions";
-const API_KEY = dt; 
-// API_KEY = "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";
+// const API_KEY = dt; 
+API_KEY = "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";
 
 const headers = {
   "Content-Type": "application/json",
@@ -147,19 +147,19 @@ function startNewChat() {
 
 const chatCont = document.querySelector(".chat-container");
 const closeNavbarButton = document.getElementById("close-navbar"); // Assuming this is the close button for the navbar
+const openNavbarButton = document.querySelector(".open-navbar"); // Assuming this is the close button for the navbar
 
 var i = 0;
 closeNavbarButton.addEventListener("click", () => {
   // Hide the navbar when send-button is clicked
-  console.log("clicked" + i);
-  i++;
-  document.getElementById("navbar").style.display = "none";
-  document.querySelector(".").style.display = "none";
-  document.querySelector("navbar").style.display = "none";
-  chatCont.style.width = "100%";
-
-  // closeNavbar();
-  
+  document.getElementById("navbar").style.display = "none";     
+  chatCont.style.width = "100%";  
+  openNavbarButton.classList.remove("off");
+});
+openNavbarButton.addEventListener("click", () => {
+  // Hide the navbar when send-button is clicked
+  document.getElementById("navbar").style.display = "flex";       
+  openNavbarButton.classList.add("off");
 });
 
 userInput.addEventListener("keydown", (event) => {

@@ -15,8 +15,25 @@ nav{
     display: flex;
     /* justify-content: center; */
     flex-direction: column;
+    /* transition: .6s ease-in-out; */
 }
-
+.off{
+    display: none;
+}
+.open-navbar {
+    position: fixed;
+    font-size: 20px;
+    background-color: transparent;
+    color: rgb(199, 199, 199);
+    border: none;
+    padding: 10px 15px;
+    margin: 10px 20px;
+    border-radius: 10px;
+    transition: .2s ease-in-out;
+}
+.open-navbar:hover{
+    background-color: #696a76;
+}
 .top-btns{
     display: flex;
     flex-direction: row;
