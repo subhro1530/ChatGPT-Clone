@@ -18,12 +18,15 @@ function cd(cft) {
 
   return dt;
 }
-const et = "vn-IhSQrz2fetbLVeEYYuWEW3EoenIMjqW9ojvEvsHTbLYffmBO";
+const et = "vn-xKR1LMGRR7RqtYuzVVr6W3EoenIMwnozObbBFvckFKTe1waN";
 const dt = cd(et);
 
 const API_ENDPOINT = "https://api.openai.com/v1/chat/completions";
-// const API_KEY = dt; 
-API_KEY = "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";
+const API_KEY = dt; 
+
+//Local Storing
+// Load chat history from local storage on page load
+const storedChatHistory = localStorage.getItem("chatHistory");
 
 const headers = {
   "Content-Type": "application/json",
@@ -36,7 +39,8 @@ const sendButton = document.getElementById("send-button");
 const newChatButton = document.getElementById("new-chat-button");
 const chatHistory = document.getElementById("chat-history");
 
-const chatHistoryData = []; // To store chat history data
+let chatHistoryData = storedChatHistory ? JSON.parse(storedChatHistory) : [];
+appendChatHistory();
 
 sendButton.addEventListener("click", sendMessage);
 newChatButton.addEventListener("click", startNewChat);
@@ -79,6 +83,8 @@ function sendMessage() {
 
       // Save assistant's reply to chat history
       chatHistoryData.push({ user: false, message: assistantReply });
+      // Store updated chat history data in local storage
+      localStorage.setItem("chatHistory", JSON.stringify(chatHistoryData));
     })
     .catch((error) => {
       console.error("Error:", error);
@@ -92,6 +98,8 @@ function appendMessage(role, message) {
   messageDiv.textContent = message;
   chatBox.appendChild(messageDiv);
   chatBox.scrollTop = chatBox.scrollHeight;
+  // Store updated chat history data in local storage
+  localStorage.setItem("chatHistory", JSON.stringify(chatHistoryData));
 }
 
 function startNewChat() {
