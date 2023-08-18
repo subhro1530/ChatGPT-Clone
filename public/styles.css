@@ -188,3 +188,27 @@ nav{
 .chat-box::-webkit-scrollbar {
     display: none;
 }
+
+.clear-all-button{
+    background-color: transparent;
+    border: none;
+    color: white;
+    opacity: .8;
+    /* width: 200px; */
+    margin-top: -20px;
+    padding: 10px 0;
+    border-radius: 20px;
+    transition: .2s ease-in-out;
+}
+.clear-all-button:hover{
+    background-color: rgb(52, 52, 52);
+}
+.copy-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 5px;
+  font-size: 1rem;
+  color: #999; /* Color for the copy icon */
+}

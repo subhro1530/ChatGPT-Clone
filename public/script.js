@@ -100,6 +100,7 @@ function appendMessage(role, message) {
   chatBox.scrollTop = chatBox.scrollHeight;
   // Store updated chat history data in local storage
   localStorage.setItem("chatHistory", JSON.stringify(chatHistoryData));
+  
 }
 
 function startNewChat() {
@@ -118,8 +119,22 @@ function startNewChat() {
   appendChatHistory(); // Update chat history display
 }
 
+
+const clearAllButton = document.createElement("button");
+clearAllButton.textContent = "Clear All";
+clearAllButton.classList.add("clear-all-button");
+clearAllButton.addEventListener("click", clearAllChatHistory);
+
+
 function appendChatHistory() {
   chatHistory.innerHTML = ""; // Clear previous history
+
+  // Add the "Clear All" button
+  const clearAllButton = document.createElement("button");
+  clearAllButton.textContent = "Clear All";
+  clearAllButton.classList.add("clear-all-button");
+  clearAllButton.addEventListener("click", clearAllChatHistory);
+  chatHistory.appendChild(clearAllButton);
 
   // Iterate through chat history data and display it
   for (const chat of chatHistoryData) {
@@ -131,6 +146,26 @@ function appendChatHistory() {
 
   chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom of the chat history
 }
+
+function clearAllChatHistory() {
+  chatHistoryData = []; // Clear all chat history data
+
+  // Update chat history display and local storage
+  appendChatHistory();
+  updateLocalStorage();
+}
+function clearChatHistoryItem(index) {
+  chatHistoryData.splice(index, 1); // Remove the specified item from chat history data
+
+  // Update chat history display and local storage
+  appendChatHistory();
+  updateLocalStorage();
+}
+
+function updateLocalStorage() {
+  localStorage.setItem("chatHistory", JSON.stringify(chatHistoryData));
+}
+
 
 
 newChatButton.addEventListener("click", startNewChat);
