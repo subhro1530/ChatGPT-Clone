@@ -105,19 +105,28 @@ nav{
     overflow-y: scroll;
     overflow-x : hidden;
 }
-.chat-history .bot{
+
+.chat-history .user{
     /* background-color: #32333f; */
-    height: 20px;
-    padding: 0;
-    margin: 10px 20px;
+    height: 40px;
+    padding: 0 15px;
+    margin: 10px 10px;
     overflow-y: scroll;
     cursor: pointer;
     overflow-x: hidden;
     text-overflow: ellipsis;
-    width: 18vw;
+    width: 17vw;
     white-space: nowrap;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    transition: .2s ease-in-out;
 }
-
+.message-icon {
+  width: 20px; /* Adjust the icon size */
+  height: 20px;
+  margin-right: 10px; /* Add some space between the icon and the message */
+}
 
 
 
@@ -158,12 +167,23 @@ nav{
     box-shadow: 0px 0px 15px 0.3px rgb(0,0,0,0.6);
 }
 #send-button{
-    background-color:#32343f;
+    background-color:transparent;
     color: grey;
     border: none;
-    font-size: 22px;
+    font-size: 18px;
     margin-left: -50px;
     transition: .2s ease-in-out;
+    padding: 5px;
+    border-radius: 5px;
+}
+.chat-history .bot{
+    display: none;
+}
+.chat-history .user{
+    background-color: transparent;
+}
+.chat-history .user:hover{
+    background-color: rgb(43, 43, 46);
 }
 #send-button:hover{
     opacity: .6;
@@ -174,6 +194,16 @@ nav{
     padding: 20px 40px;
     /* border-radius: 20px; */
     width: 75vw;
+    display: flex;
+}
+.user img{
+    width: 25px;
+    padding: 5px 6px;
+    margin-top: -10px;
+    background-color: transparent;
+    margin-right: 15px;
+    border-radius: 5px;
+    height: 25px;
 }
 .bot{
     color: rgb(255, 255, 255);
@@ -206,6 +236,17 @@ nav{
 .bot {
   position: relative;
   padding-right: 20px; /* Add some space for the icon */
+  display: flex;
+}
+
+.bot img{
+    width: 20px;
+    padding: 5px 6px;
+    margin-top: -6px;
+    background-color: rgb(255, 162, 162);
+    margin-right: 15px;
+    border-radius: 5px;
+    height: 20px;
 }
 
 .copy-button {
@@ -231,3 +272,19 @@ nav{
   transform: scale(0.8); /* Shrink on click */
 }
 
+.regenerate-button{
+    position: fixed;
+    margin-top: 430px;
+    margin-left: 850px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: .5px solid grey;
+    color: white;
+    opacity: .7;
+    background-color: #32333f;
+    transition: .2s ease-in-out;
+    cursor: pointer;
+}
+.regenerate-button:hover{
+    opacity: 1;
+}
