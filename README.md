@@ -1,4 +1,5 @@
 # ChatBOT3
+v1.0.0 at https://chatbotgpt3.web.app/
 
 ## A better version of ChatGPT capable of handling single requests instead of multiple prompts in a chat.
 
@@ -9,5 +10,6 @@
 2.  It has been build as such that it is capable of running on desktop only. Still newer versions may solve the problems as well
 
 ## For any help contact
-
-(shaswata.ssaha@gmail.com)["mailto:shaswata.ssaha@gmail.com"]
+1.  shaswata.ssaha@gmail.com
+or
+2.  https://www.linkedin.com/in/shaswata-saha-74b209251/
